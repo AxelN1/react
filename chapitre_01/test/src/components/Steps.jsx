@@ -5,11 +5,11 @@ class Steps extends React.component {
     render() {
         return (
 
-            <div>
-
-
+            <div className="box" className="col-sm-3" className="col-6">
 
                 
+
+
             </div>
 
 
