@@ -7,7 +7,9 @@ class Steps extends React.component {
 
             <div className="box" className="col-sm-3" className="col-6">
 
-                
+                <span className="material-icons" style={{fontSize = 100}, {color = "black"}}>
+                direction_walk
+                </span>
 
 
             </div>
@@ -25,4 +27,4 @@ class Steps extends React.component {
 
 }
 
-export default Steps
+export default Steps;
