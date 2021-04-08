@@ -1,29 +1,20 @@
 import React from "react";
+// import App from "./src/App";
 
-class Steps extends React.component {
+class Steps extends React.Component {
 
     render() {
         return (
 
-            <div className="box" className="col-sm-3" className="col-6">
+            <div className="box col-sm-3 col-6">
 
-                <span className="material-icons" style={{fontSize = 100}, {color = "black"}}>
-                direction_walk
+                <span className="material-icons" style={{fontSize : 100, color : "red"}}>
+                directions_walk
                 </span>
-
-
             </div>
-
-
-
         )
 
-
-
     }
-
-
-
 
 }
 

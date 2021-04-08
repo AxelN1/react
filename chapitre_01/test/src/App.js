@@ -1,5 +1,7 @@
 import React from "react";
 import './App.css';
+import Steps from "./components/Steps.jsx"
+// import global from "./styles"
 
 const tempMin = -20;
 const tempMax = 40;
@@ -11,11 +13,14 @@ const stepsMax = 50000;
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <div className ="row">
-          <p>Heart : {this.heartMin}</p>
-          <p>Temperature : {this.tempMin}</p>
+      <div className="container-fluid">
+
+        <div className="row">
+          <Steps></Steps>
+          <p>Heart : {heartMin}</p>
+          <p>Temperature : {tempMin}</p>
           <p>Steps : {stepsMin}</p>
+          <span></span>
         </div>
         <h1 className="text-primary">Hello !</h1>
       </div>
