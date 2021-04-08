@@ -17,12 +17,24 @@ class App extends React.Component {
       <div className="container-fluid">
 
         <div className="row">
-          <Box></Box>
+          {/* <Box></Box> */}
           <p>Heart : {heartMin}</p>
           <p>Temperature : {tempMin}</p>
           <p>Steps : {stepsMin}</p>
           <span></span>
+
+          {/* Water */}
+          <Box icon="local-drink" color="#3A85FF" value="1,5" unit="L"/>
           
+          {/* Steps */}
+          <Box icon="directions_walk" color="black" value="3000" unit="steps"/>
+          
+          {/* Heart */}
+          <Box icon="favorite" color="red" value="120" unit="bpm"/>
+          
+          {/* Temperature */}
+          <Box icon="wb_sunny" color="yellow" value="-10" unit="°C"/>
+
         </div>
         <h1 className="text-primary">Hello !</h1>
       </div>
@@ -31,3 +43,11 @@ class App extends React.Component {
 }
 
 export default App;
+
+// Dans les boîtes Steps, Heart et Temperature :
+
+// - `icon` : `"directions_walk"`, `"favorite"` et `"wb_sunny"`
+// - `color` : `"black"`, `"red"`, et `"yellow"`
+
+// - `value` : `3000`, `120` et `-10`
+// - `unit` : `"steps"`, `"bpm"` et `"°C"`
