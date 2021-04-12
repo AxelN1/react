@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 
-import Counter from './components/Counter.js'
+import Counter from './components/Counter.jsx'
 
 class App extends React.Component {
 
@@ -19,9 +19,14 @@ class App extends React.Component {
   decrementCount() {
     const { count } = this.state
 
+    if(count === 0) {
+      return;
+    } 
+    
     this.setState({
       count: count - 1
     })
+     
   }
 
   // decrementCount = () => {
