@@ -1,8 +1,16 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+class App extends React.Component {
   return (
+    constructor() {
+      super()
+      state = {
+	  username: ""
+    
+}
+    }
+
     <div>
 
     <h1 className="text-center">Login</h1>
