@@ -1,19 +1,29 @@
 import React from 'react';
+// import Button from "./components/Button.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function App() {
+class App extends React.Component {
+
   constructor() {
-    super()
+      super()
 
-    this.state = {
-      activeTab : "add ",
-      items : [] 
-    }
+      this.state = {
+        activeTab : "add",
+        items : [] 
+      }
 
-  return (
-    
-  );
+  }
+
+
+  
+  render() {
+    return (
+
+      <h1>Bakery</h1>
+    )
 }
 
-export default App;
+}
+
+export default App
