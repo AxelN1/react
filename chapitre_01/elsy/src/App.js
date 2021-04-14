@@ -12,8 +12,10 @@ const stepsMin = 0;
 const stepsMax = 50000;
 
 class App extends React.Component {
+
   constructor() {
-    super();
+    super()
+
     this.state = {
       water: 0,
       heart: 120,
@@ -23,12 +25,15 @@ class App extends React.Component {
   }
 
 onHeartChange = (value) => {
+  
   this.setState({
-    heart: value
+    // heart: value
+    heart: this.state.heart
   })
 
   this.onHeartChange = this.onHeartChange.bind(this)
 };
+
 
   render() {
     return (
@@ -36,22 +41,22 @@ onHeartChange = (value) => {
 
         <div className="row">
           {/* <Box></Box> */}
-          <p>Heart : {heartMin}</p>
+          {/* <p>Heart : {heartMin}</p>
           <p>Temperature : {tempMin}</p>
-          <p>Steps : {stepsMin}</p>
+          <p>Steps : {stepsMin}</p> */}
           <span></span>
 
           {/* Water */}
-          <Box icon="local_drink" color="#3A85FF" value="1,5" unit="L"/>
+          <Box icon="local_drink" color="#3A85FF" value= {0} unit="L"/>
           
           {/* Steps */}
-          <Box icon="directions_walk" color="black" value="3000" unit="steps"/>
+          <Box icon="directions_walk" color="black" value= {3000} unit="steps"/>
           
           {/* Heart */}
-          <Box icon="favorite" color="red" value="120" unit="bpm"/>
+          <Box icon="favorite" color="red" value= {120} unit="bpm"/>
           
           {/* Temperature */}
-          <Box icon="wb_sunny" color="yellow" value="-10" unit="°C"/>
+          <Box icon="wb_sunny" color="yellow" value= {-10} unit="°C"/>
 
         </div>
         <h1 className="text-primary">Hello !</h1>
@@ -61,11 +66,3 @@ onHeartChange = (value) => {
 }
 
 export default App;
-
-// Dans les boîtes Steps, Heart et Temperature :
-
-// - `icon` : `"directions_walk"`, `"favorite"` et `"wb_sunny"`
-// - `color` : `"black"`, `"red"`, et `"yellow"`
-
-// - `value` : `3000`, `120` et `-10`
-// - `unit` : `"steps"`, `"bpm"` et `"°C"`
