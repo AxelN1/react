@@ -1,17 +1,28 @@
+import React from 'react'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
-  return (
-    constructor() {
-      super()
-      state = {
-	  username: ""
-    
-}
-    }
 
-    <div>
+  constructor() {
+    super()
+    this.state = {
+    email: "",
+    password: ""
+  
+}
+  }
+
+  checkEmail() {
+    
+  }
+
+  render() {
+
+    return (
+      
+      
+      <div>
 
     <h1 className="text-center">Login</h1>
     <p>Email Adress</p>
@@ -30,6 +41,9 @@ class App extends React.Component {
 
     </div>
   );
+
+}
+
 }
 
 export default App;

@@ -1,68 +1,141 @@
 import React from "react";
-import './App.css';
-import Box from "./components/Box.jsx"
-import global from "../src/styles/global.css"
-// import "../src/styles/global.css"
+import Box from "./components/Box.jsx";
+import './styles/global.css';
 
-const tempMin = -20;
-const tempMax = 40;
-const heartMin = 80;
-const heartMax = 180;
-const stepsMin = 0;
-const stepsMax = 50000;
+const tempMin = -20
+const tempMax = 40
+const heartMin = 80
+const heartMax = 180
+const stepsMin = 0
+const stepsMax = 50000
 
 class App extends React.Component {
 
-  constructor() {
-    super()
+    constructor() {
+        super()
 
-    this.state = {
-      water: 0,
-      heart: 120,
-      temperature: -10,
-      steps: 3000
+        this.state = {
+            water: 1.5,
+            heart: 120,
+            temperature: -10,
+            steps: 3000
+        }
+
+        this.onHeartChange = this.onHeartChange.bind(this)
+        this.onStepsChange = this.onStepsChange.bind(this)
+        this.onTemperatureChange = this.onTemperatureChange.bind(this)
     }
-  }
 
-onHeartChange = (value) => {
-  
-  this.setState({
-    // heart: value
-    heart: this.state.heart
-  })
+    calculateWater() {
+        let water = 1.5
 
-  this.onHeartChange = this.onHeartChange.bind(this)
-};
+        const {
+            temperature,
+            heart,
+            steps 
+        } = this.state
 
+        if (temperature > 20) {
+            // 20 > 20 => 0
+            // 21 > 20 => 1 => 0,02
+            // 22 > 20 => 2 => 0,04
+            // ...
+            // 25 > 20 => 5 => 0,10
 
-  render() {
-    return (
-      <div className="container-fluid">
+            const gradesGreater = temperature - 20
+            const litersTemp = gradesGreater * 0.02
 
-        <div className="row">
-          {/* <Box></Box> */}
-          {/* <p>Heart : {heartMin}</p>
-          <p>Temperature : {tempMin}</p>
-          <p>Steps : {stepsMin}</p> */}
-          <span></span>
+            water += litersTemp
+        } 
+        
+        if (heart > 120) {
+            const beatGreater = heart - 120
+            const litersHeart = beatGreater * 0.0008
 
-          {/* Water */}
-          <Box icon="local_drink" color="#3A85FF" value= {0} unit="L"/>
-          
-          {/* Steps */}
-          <Box icon="directions_walk" color="black" value= {3000} unit="steps"/>
-          
-          {/* Heart */}
-          <Box icon="favorite" color="red" value= {120} unit="bpm"/>
-          
-          {/* Temperature */}
-          <Box icon="wb_sunny" color="yellow" value= {-10} unit="°C"/>
+            water += litersHeart
+        } 
+        
+        if (steps > 10000) {
+            const stepsGreater = steps - 10000
+            const litersSteps = stepsGreater * 0.00002
 
-        </div>
-        <h1 className="text-primary">Hello !</h1>
-      </div>
-    );
-  }
+            water += litersSteps
+        }
+
+        water = parseFloat(water.toFixed(2))
+        // water = water.toFixed(2)
+
+        this.setState({
+            // water: water
+            water
+        })
+    }
+
+    onHeartChange(e) {
+        this.setState({
+            heart: e.target.value
+        })
+
+        this.calculateWater()
+    }
+
+    onStepsChange(e) {
+        this.setState({
+            steps: e.target.value
+        })
+
+        this.calculateWater()
+    } 
+
+    onTemperatureChange(e) {
+        this.setState({
+            temperature: e.target.value
+        })
+
+        this.calculateWater()
+    }
+
+    render() {
+        return (
+            <div className="container-fluid">
+                <div className="row">
+                    {/* Water */}
+                    <Box icon="local_drink" color="#3A85FF" value={this.state.water} unit="L" />
+
+                    {/* Steps */}
+                    <Box
+                        icon="directions_walk"
+                        color="black"
+                        value={this.state.steps}
+                        unit="steps"
+                        min={stepsMin}
+                        max={stepsMax}
+                        onChange={this.onStepsChange} />
+
+                    {/* Heart */}
+                    <Box
+                        icon="favorite"
+                        color="red"
+                        value={this.state.heart}
+                        unit="bpm"
+                        min={heartMin}
+                        max={heartMax}
+                        onChange={this.onHeartChange} />
+
+                    {/* Temperature */}
+                    <Box
+                        icon="wb_sunny"
+                        color="yellow"
+                        value={this.state.temperature}
+                        unit="°C"
+                        min={tempMin}
+                        max={tempMax}
+                        onChange={this.onTemperatureChange} />
+
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;

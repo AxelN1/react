@@ -1,67 +1,43 @@
-import React from "react";
-// import App from "./src/App";
+import React from 'react'
 
 class Box extends React.Component {
 
-    constructor(){
-        super()
-        this.state = {
-          changeValue: ''
-        }
-      } 
-
-      handleInput(e){ 
-        this.setState({ changeValue: e.target.value })
-      }
-
-      
-
     render() {
-        
-        console.log(this.onHeartChange);
-   
-        const handleSlider = () => {
 
-            if (this.props.unit === "L") {
-                return <input type="range" min={0} max={5000} value={this.state.changeValue} onInput={this.handleInput.bind(this)}/>
-                
-            }
-            else if(this.props.unit === "steps") {
-                return <input type="range" min={0} max={50000} value={this.state.changeValue} onInput={this.handleInput.bind(this)}/>
-                
-            }
-            else if (this.props.unit === "bpm") {
-                return <input type="range" min={this.props.heartMin} max={this.props.heartMax} value={this.state.changeValue} onInput={this.handleInput.bind(this)} />
+        // console.log("this.props", this.props);
 
-            }
-            else if (this.props.unit === "°c") {
-                return <input type="range" min={-20} max={40} value={this.state.changeValue} onInput={this.handleInput.bind(this)} />
-               
-            }
+        const { 
+            icon,
+            color,
+            value,
+            unit,
+            min,
+            max,
+            onChange 
+        } = this.props
 
+        let inputRange = null
+
+        if (unit !== "L") {
+            inputRange = (
+                <input type="range"
+                    min={min}
+                    max={max}
+                    value={value}
+                    onInput={onChange} />
+            )
         }
-    
+
         return (
             <div className="box col-sm-3 col-6">
-
-                
-                <span className="material-icons" style={{fontSize:100, color : this.props.color }} >
-                    {this.props.icon}
+                <span className="material-icons" style={{ fontSize: 100, color: color }}>
+                    {icon}
                 </span>
-                
-               
-                <p> {this.props.count} { this.state.changeValue } {this.props.unit}</p>
-                <div>{handleSlider()}</div>
-                
-               
-              
-               
+                <p>{value} {unit}</p>
+                {inputRange}
             </div>
-
         )
-
-
-    };
+    }
 }
 
-export default Box;
+export default Box
