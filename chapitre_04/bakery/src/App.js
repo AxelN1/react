@@ -1,6 +1,9 @@
 import React from 'react';
-// import Button from "./components/Button.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from './components/Button.jsx';
+import Add from './components/Add.jsx';
+import List from './components/List.jsx';
+import Pay from './components/Pay.jsx';
 
 
 class App extends React.Component {
@@ -20,7 +23,11 @@ class App extends React.Component {
   render() {
     return (
 
+      <div>
+
       <h1>Bakery</h1>
+
+      </div>
     )
 }
 
