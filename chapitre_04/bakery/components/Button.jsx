@@ -25,9 +25,6 @@ class Button extends React.Component {
                 <button>{this.props.children}</button>
                 
 
-
-
-                
             </div>
         )
     }

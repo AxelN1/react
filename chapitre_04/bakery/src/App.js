@@ -12,18 +12,29 @@ class App extends React.Component {
       super()
 
       this.state = {
-        activeTab : "add",
+        activeTab : children,
         items : [] 
       }
 
   }
 
-  onClickAdd(children) {
+  selectAdd(children) {
     this.setState = {
-      activeTab: children,
+      activeTab: "add",
     };
   }
 
+  selectPay(children) {
+    this.setState({
+      activeTab: "pay",
+    });
+  }
+
+  selectList(children) {
+    this.setState({
+      activeTab: 'list',
+    });
+  }
 
 
   
@@ -50,6 +61,17 @@ class App extends React.Component {
             isSelected={this.state.activeTab === "add"}
             onClick={this.onClickAdd}
           > Add </Button>
+
+
+          < Button
+            isSelected={this.state.activeTab === "list"}
+            onClick={this.onClickList}
+          > List </Button>
+
+        < Button
+            isSelected={this.state.activeTab === "pay"}
+            onClick={this.onClickPay}
+          > Pay </Button>
 
       <h1>Bakery</h1>
 
