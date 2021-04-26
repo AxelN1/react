@@ -1,19 +1,15 @@
+// import React, { Component } from 'react'
 import React from 'react';
 
-class Pay extends React.Component {
 
+class Pay extends React.Component {
     render() {
         return (
-
             <div>
-                <h1>Pay</h1>
+                Pay
             </div>
-
-
-
         )
     }
-
 }
 
 export default Pay

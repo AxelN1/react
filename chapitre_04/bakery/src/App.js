@@ -1,84 +1,75 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from './components/Button.jsx';
-// import Add from './components/Add.jsx';
-// import List from './components/List.jsx';
-// import Pay from './components/Pay.jsx';
-
+import Add from './views/Add';
+import List from './views/List';
+import Pay from './views/Pay';
 
 class App extends React.Component {
 
   constructor() {
-      super()
-
-      this.state = {
-        activeTab : children,
-        items : [] 
-      }
-
+    super();
+    this.state = {
+      activeTab: 'add',
+      items: []
+    }
+    this.selectAdd = this.selectAdd.bind(this)
+    this.selectList = this.selectList.bind(this)
+    this.selectPay = this.selectPay.bind(this)
+    
+    this.addItems = this.addItem.bind(this)
   }
 
-  selectAdd(children) {
-    this.setState = {
-      activeTab: "add",
-    };
-  }
-
-  selectPay(children) {
+  selectAdd() {
     this.setState({
-      activeTab: "pay",
-    });
+      activeTab: "add"
+    })
   }
 
-  selectList(children) {
+  selectList() {
     this.setState({
-      activeTab: 'list',
-    });
+      activeTab: "list"
+    })
   }
 
+  selectPay() {
+    this.setState({
+      activeTab: "pay"
+    })
+  }
 
-  
+  addItem(name, price) {
+    
+          const newItem = {
+            name,
+            // name: name
+            price
+            // price: price
+          }
+    this.setState({
+
+      items: [...this.state.items, newItem]
+
+    })
+  }
+
   render() {
+    console.log("In render: this.state.items", this.state.items);
+
     return (
-
       <div>
+        <h1>Bakery</h1>
 
-      <nav className="col">
-          <p>
-            <a href="./components/Add">Add</a>
-          </p> 
+        <Button isSelected={this.state.activeTab === 'add'} onClick={this.selectAdd}>Add</Button>
+        <Button isSelected={this.state.activeTab === 'list'} onClick={this.selectList}>List</Button>
+        <Button isSelected={this.state.activeTab === 'pay'} onClick={this.selectPay}>Pay</Button>
 
-          <p>
-            <a href="./components/List">List</a>
-            </p>
-            <p>
-            <a href="./components/Pay">Pay</a>
-          </p>
-
-        </nav>
-          
-          <Button
-            isSelected={this.state.activeTab === "add"}
-            onClick={this.onClickAdd}
-          > Add </Button>
-
-
-          < Button
-            isSelected={this.state.activeTab === "list"}
-            onClick={this.onClickList}
-          > List </Button>
-
-        < Button
-            isSelected={this.state.activeTab === "pay"}
-            onClick={this.onClickPay}
-          > Pay </Button>
-
-      <h1>Bakery</h1>
-
+        {this.state.activeTab === 'add' && <Add addItem={this.addItem}></Add>}
+        {this.state.activeTab === 'list' && <List items={this.state.items}></List>}
+        {this.state.activeTab === 'pay' && <Pay></Pay>}
       </div>
-    )
+    );
+  }
 }
 
-}
-
-export default App
+export default App;
