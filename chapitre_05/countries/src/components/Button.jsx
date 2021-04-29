@@ -7,7 +7,11 @@ class Button extends React.Component {
   
     return (
       <div>
-        <h1>Button</h1>
+        <button
+        onClick={() => this.props.onClick()}
+        className="btn btn-primary">
+          Button
+        </button>
     </div>
   );
 }
