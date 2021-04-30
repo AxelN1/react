@@ -4,6 +4,7 @@ import Button from './components/Button.jsx';
 import Add from './views/Add';
 import List from './views/List';
 import Pay from './views/Pay';
+import Card from './components/Card.jsx';
 
 class App extends React.Component {
 
@@ -67,6 +68,7 @@ class App extends React.Component {
         {this.state.activeTab === 'add' && <Add addItem={this.addItem}></Add>}
         {this.state.activeTab === 'list' && <List items={this.state.items}></List>}
         {this.state.activeTab === 'pay' && <Pay></Pay>}
+        <Card/>
       </div>
     );
   }
