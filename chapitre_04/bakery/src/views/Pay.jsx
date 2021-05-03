@@ -1,5 +1,6 @@
 // import React, { items } from 'react'
 import React from 'react';
+import Card from '../components/Card';
 
 
 class Pay extends React.Component {
@@ -23,9 +24,29 @@ class Pay extends React.Component {
         return (
             <div>
                 <p>{this.state.total}</p>
+
+                    {this.props.productName}
+                    {this.props.price}
+                    {this.props.onClick}
+
+                    {/* <Card productName= "croissant" /> */}
+                    
+                <div>
+                    {items.map((item) =>
+                        <Card 
+                            name={this.props.productName}
+                            price={this.props.price}
+                            click={this.handleSelect}
+                            />
+                    )}
+                </div>
+
+
+                
             </div>
+
         )
     }
 }
 
-export default Pay
+export default Pay;

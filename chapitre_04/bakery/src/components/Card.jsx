@@ -6,7 +6,7 @@ class Card extends React.Component {
     constructor() {
         super();
         this.state = {
-            image: "../public/images/item.png"
+            image: "../../public/images/item.png"
         }
     }
 
@@ -19,10 +19,12 @@ class Card extends React.Component {
                 {this.props.onClick}
 
                 {/* <Button onClick={this.productName}></Button> */}
-                <Button onClick={this.state.productName, this.props.price}></Button>
+                <Button onClick={this.state.productName, this.props.price}>
+                    <img src={this.state.image} />
+                </Button>
             </div>
         )
     }
 }
 
-export default Card
+export default Card;

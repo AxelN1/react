@@ -48,4 +48,4 @@ class Add extends React.Component {
         )
     }
 }
-export default Add
+export default Add;
